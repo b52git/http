@@ -3,11 +3,19 @@ require 'cgi'
 cgi = CGI.new
 puts cgi.header
 
+title = {
+  'about' => 'About Us',
+  'home' => 'Welcome'
+}
+
+page = 'home'
+page = cgi['page'] unless cgi['page'].empty?
+
 html_head = "
 <!doctype html>
 <html>
   <head>
-  <title>#{cgi['page']}</title>
+  <title>#{title[page]}</title>
   </head>
   <body>"
 
